@@ -1,2 +1,2 @@
 # Calculator
-A NOT basic calculator app, its better.
+A NOT so basic calculator app, its better.
