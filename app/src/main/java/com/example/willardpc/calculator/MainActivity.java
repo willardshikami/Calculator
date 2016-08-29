@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView _screen;
     private String display = " ";
+    private String currentOperator = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +28,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onClickNumber(View v) {
         Button b = (Button) v;
         display += b.getText();
+        updateScreen();
+    }
+
+    protected void onClickOperator(View v) {
+        Button b = (Button) v;
+        display += b.getText();
+        currentOperator = b.getText().toString();
+        updateScreen();
+    }
+
+    private void clear() {
+        display = " ";
+        currentOperator = " ";
+        updateScreen();
+    }
+
+    protected void onClickClear (View v) {
+
+        updateScreen();
+    }
+
+
+    protected void onClickEqual(View v) {
+
     }
 }
