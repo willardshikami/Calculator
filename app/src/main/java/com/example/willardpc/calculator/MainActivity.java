@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView _screen;
@@ -22,35 +24,64 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateScreen() {
+
         _screen.setText(display);
     }
 
-    protected void onClickNumber(View v) {
+    public void onClickNumber(View v) {
         Button b = (Button) v;
         display += b.getText();
         updateScreen();
     }
 
-    protected void onClickOperator(View v) {
+    public void onClickOperator(View v) {
         Button b = (Button) v;
         display += b.getText();
         currentOperator = b.getText().toString();
         updateScreen();
     }
 
-    private void clear() {
+    public void clear() {
         display = " ";
         currentOperator = " ";
         updateScreen();
     }
 
-    protected void onClickClear (View v) {
-
+    public void onClickClear (View v) {
+        clear();
         updateScreen();
     }
 
+    private double Operate(String a, String b, String op) {
+        switch (op) {
+            case "+":
+                return Double.valueOf(a) + Double.valueOf(b);
+            case "-":
+                return Double.valueOf(a) - Double.valueOf(b);
+            case "x":
+                return Double.valueOf(a) * Double.valueOf(b);
+            case "/":
+                try {
+                    return Double.valueOf(a) / Double.valueOf(b);
+                } catch (Exception e) {
 
-    protected void onClickEqual(View v) {
 
+                }
+            default:
+                return -1;
+        }
+    }
+
+
+    public void onClickEqual(View v) {
+        String[] operation = display.split(Pattern.quote(currentOperator));
+        if(operation.length < 2 ) return;
+
+        try {
+
+
+        }catch(Exception e) {
+
+        }
     }
 }
