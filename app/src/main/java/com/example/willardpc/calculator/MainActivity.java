@@ -2,6 +2,7 @@ package com.example.willardpc.calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     return Double.valueOf(a) / Double.valueOf(b);
                 } catch (Exception e) {
-
+                    Log.d("Calc", e.getMessage());
 
                 }
             default:
@@ -77,11 +78,6 @@ public class MainActivity extends AppCompatActivity {
         String[] operation = display.split(Pattern.quote(currentOperator));
         if(operation.length < 2 ) return;
 
-        try {
-
-
-        }catch(Exception e) {
-
-        }
+        Double result = Operate (operation[0], operation[1], currentOperator);
     }
 }
